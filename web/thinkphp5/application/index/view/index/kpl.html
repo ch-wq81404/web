@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>版块页面</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-style.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-media.css" />
+<link href="/web/thinkphp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">MatAdmin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">欢迎No:<span id="username">{$Think.session.userID}</span></span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/invoice"><i class="icon-user"></i> 我的资料</a></li>
+        <li class="divider"></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/logOut"><i class="icon-key"></i> 退出</a></li>
+      </ul>
+    </li>
+    <li class=""><a title="" href="http://localhost/web/thinkphp5/public/index.php/index/add/invoice"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
+    <li class=""><a title="" href="http://localhost/web/thinkphp5/public/index.php/index/add/logOut"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+  </ul>
+</div>
+<!--start-top-serch-->
+<div id="search">
+  <form method="post" action="search">
+  <input type="text" name="search_value" placeholder="输入搜索内容..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+	</form>
+</div>
+<!--close-top-serch--> 
+
+<!--sidebar-menu-->
+<div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-inbox"></i> Widgets</a>
+   <ul>
+     <li><a href="index"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;首页</span></a></li>
+     <li class="active submenu" > <a href="#"><em class="icon icon-inbox"></em> <span>&nbsp;&nbsp;&nbsp;板块</span></a>
+		<ul >
+        	<li><a href="kpl">王者荣耀</a></li>
+        	<li><a href="pubg">绝地求生</a></li>
+      	</ul>
+	 </li>
+<!--	    <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/search"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;搜索</span></a></li>-->
+  </ul>
+</div>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">王者荣耀</a> </div>
+    <h1>王者荣耀
+	  <a class="cancel-btn" type="button" style="font-size: 14px;" href="http://localhost/web/thinkphp5/public/index.php/index/release/form_common?arsource='王者荣耀'">我要发帖</a>
+	  </h1>
+  </div>
+<!--	  设计为点击我加入的某个模块而动态显示-->
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span10">
+        <div class="widget-box">
+          <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG1"> <span class="icon"> <i class="icon-chevron-down"></i> </span>
+            <h5>Talks</h5>
+			  <div class="balls">
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+			  </div>
+          </div>
+          <div class="widget-content nopadding collapse in" id="collapseG1" >
+            <ul class="recent-posts">
+				{volist name="articles" id="article"}
+             <li>
+                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av1.jpg"> </div>
+                <div class="article-post"> <span class="user-info"> By: No.<span class="auther-name">{$article->getData('autherID')}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Date: <span class="publish-date">{$article->getData('date_time')|substr=0,10}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Time:<span class="publish-time">{$article->getData('date_time')|substr=11}</span> </span>
+                  <p ><a class="article-title" href="{:url('talk_detail', ['arID'=>$article->getData('arID')])}">{$article->getData('title')}</a> </p>
+					<div >
+					<ul class="article-info">
+					<li><span class="icon"><i class="icon-heart-empty"></i></span><div class="num-heart" >{$article->getData('arheart')}</div></li>
+					<li><span class="icon"><i class="icon-comments-alt"></i></span><div class="num-comment" >{$article->getData('arcomment')}</div></li>
+					</ul>
+						<div class="article-source">{$article->getData('arsource')}</div>
+					</div>
+				
+                </div>
+              </li>
+				{/volist}
+            </ul>
+			  {$articles->render()}
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+<!--main-container-part-->
+
+<!--Footer-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12">Copyright &copy; 2018.Company name All rights reserved wq.</div>
+</div>
+	
+<!--end-Footer-part-->
+<!--
+<script>
+	function on_Mouseup(e){
+		var href="http://localhost/php/open.php?title="+e.innerHTML;
+		e.href=href;
+	}
+</script>
+-->
+<script src="/web/thinkphp5/public/static/js/jquery.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.ui.custom.js"></script> 
+<script src="/web/thinkphp5/public/static/js/matrix.js"></script>
+<!-- <script src="/web/thinkphp5/public/static/js/kpl_onload.js"></script> -->
+</body>
+</html>

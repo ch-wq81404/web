@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>用户信息</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--	<link href="/web/thinkphp5/public/static/css/bootstrap.css" rel="stylesheet"/>-->
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-style.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-media.css" />
+<link href="/web/thinkphp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">MatAdmin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">欢迎No:<span id="username">{$Think.session.userID}</span></span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="invoice"><i class="icon-user"></i> 我的资料</a></li>
+		<li class="divider"></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/logOut"><i class="icon-key"></i> 退出</a></li>
+      </ul>
+	  </li>
+    <li class=""><a href="#"><i class="icon icon-cog"></i><span class="text">设置</span></a></li>
+	  <li class=""><a href="login"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+  </ul>
+</div>
+<!--start-top-serch-->
+<!--close-top-serch--> 
+
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> 控制台</a>
+  <ul>
+    <li class="active"><a href="http://localhost/web/thinkphp5/public/index.php/index/index"><i class="icon icon-home"></i> <span>首页</span></a> </li>
+    <li class="submenu"> <a href="#"><em class="icon icon-inbox"></em> <span>&nbsp;&nbsp;&nbsp;版块</span></a>
+	  <ul >
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/kpl">王者荣耀</a></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/pubg">绝地求生</a></li>
+		   
+      </ul>
+	</li>
+<!--	  <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/search"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;搜索</span></a></li>-->
+  </ul>
+</div>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="invoice">账户信息</a></div>
+    <h1>账户信息</h1>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-briefcase"></i> </span>
+            <h5 >个人信息</h5>
+          </div>
+          <div class="widget-content">
+            <div class="row-fluid">
+              <div class="span10">
+                <table class="table table-bordered table-invoice">
+                  <tbody>
+                    <tr>
+                    <tr>
+                      <td class="width30">账户 ID:</td>
+                      <td class="width70"><strong>{$userinfo->getData('userID')}</strong></td>
+                    </tr>
+					  <tr>
+                      <td class="width30">昵称:</td>
+                      <td class="width70"><strong>{$userinfo->getData('username')}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>注册时间:</td>
+                      <td><strong>{$userinfo->getData('sign_time')}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>发帖数:</td>
+                      <td><strong>{$userinfo->getData('articlenum')}</strong></td>
+                    </tr>
+                  <td class="width30">邮件地址:</td>
+                    <td class="width70"><strong>{$userinfo->getData('email')}</strong></td>
+                  </tr>
+                    </tbody>
+                  
+                </table>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="pull-right">
+                  <br>
+                  <a class="btn btn-primary btn-large pull-right" id="cancelID">注销账号</a>
+				  <a class="btn btn-primary btn-large pull-right" id="editID">编辑账号</a></div>
+
+              </div>
+            </div>
+          </div>
+		
+        </div>
+      </div>
+    </div>
+	
+  </div>
+	<div class="modal fade" id="editUserInfo" role="dialog" style="width:300px">
+  <div class="modal-dialog" style="width:300px">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >编辑账户信息</h4>
+      </div>
+		<form id="editform" name="editform" method="post" action="edit">
+		      <div id="editUserModal" class="modal-body" >
+          <div class="form-group">
+            <label for="edituserName" class="col-sm-2 control-label">昵称：</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="edituserName" type="text" value="{$userinfo->getData('username')}" />
+	
+            </div>
+          </div>
+			<div class="form-group">
+            <label for="edituserEmail" class="col-sm-2 control-label">邮件地址：</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="edituserEmail" type="text" value="{$userinfo->getData('email')}" />
+				
+            </div>
+          </div>
+
+       </div>
+      <div class="modal-footer">
+        <div class="center-block">
+          <button id="cancelEdit" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <input id="saveEdit" type="submit" value="保存" class="btn btn-success" />
+<!--			data-dismiss="modal" -->
+        </div>
+      </div>
+		</form>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--Footer-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a> </div>
+</div>
+<!--end-Footer-part--> 
+<script src="/web/thinkphp5/public/static/js/jquery.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.ui.custom.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/matrix.js"></script>
+<script>
+$("#editID").click(function () {
+      console.log('edit');
+        $("#editUserInfo").modal();
+    });
+$("#cancelID").click(function(){
+	if(confirm("确定注销账号?")){
+		$("#cancelID").attr('href','cancel');
+	}
+	else
+		return;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fans Talk</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-login.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/fullcalendar.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-style.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-media.css" />
+<link href="/web/thinkphp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<!--Header-part-->
+<div id="header">
+  <h1><a>MatAdmin</a></h1>
+</div>
+<!--close-Header-part-->
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">欢迎&nbsp;No:<span id="username">{$Think.session.userID}</span></span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/invoice"><i class="icon-user"></i> 我的资料</a></li>
+        <li class="divider"></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/login"><i class="icon-key"></i> 退出</a></li>
+      </ul>
+    </li>
+	  <li class=""><a title="" href="http://localhost/web/thinkphp5/public/index.php/index/add/invoice"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
+    <li class=""><a title="" href="http://localhost/web/thinkphp5/public/index.php/index/add/login"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+  </ul>
+</div>
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> 控制台</a>
+  <ul>
+    <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/index"><i class="icon icon-home"></i> <span>首页</span></a> </li>
+    <li class="active submenu"> <a href="#"><em class="icon icon-inbox"></em> <span>&nbsp;&nbsp;&nbsp;版块</span></a>
+	  <ul >
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/kpl">王者荣耀</a></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/pubg">绝地求生</a></li>
+		  
+      </ul>
+	</li>
+<!--	 <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/search"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;搜索</span></a></li>-->
+  </ul>
+</div>
+<!--sidebar-menu-->	
+<div id="content">
+<!--breadcrumbs-->
+	<div id="content-header">
+    	<div id="breadcrumb"> <a href="index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a><a href="#" class="current">Talk 详情</a></div>
+  	</div>
+<!--
+<div class="row-fluid">
+	
+</div>
+-->
+<div class="span10">
+	<div class="widget-box" id="newestTalk">
+		<div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG1"><span class="icon"><i class="icon-chevron-down"></i></span>
+            <h5>博主贴</h5>
+			<div class="balls">
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+			  </div>
+          </div> 
+		    <div class="widget-content nopadding collapse in" id="collapseG1">
+            <ul class="recent-post">
+              <li>
+                <div class="detail-user-thumb"> <img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av1.jpg"> </div>
+                <div class="article-post"> <span class="user-info"> By: No.<span class="auther-name">{$articledetail->getData('autherID')}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Date: <span class="publish-date">{$articledetail->getData('date_time')|substr=0,10}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Time:<span class="publish-time">
+                  {$articledetail->getData('date_time')|substr=11}</span> </span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><i class="icon-thumbs-up"></i><a class="thumb-up" href="{:url('like_article', ['arID'=>$articledetail->getData('arID')])}">喜欢</a>
+					<br/>
+				<h3 class="article-title" id="j_data" data-maxpage="1"  tid="27278999" fid="4657" fidname="王者荣耀" data-newpost="" data-replies="4" last="1557244224" csrftoken="2b2b70cdc9" pushtohot="0" data-userid="42831523">{$articledetail->getData('title')}</h3>
+						<span class="browse">
+							<i class="icon-heart"></i></span><span id="arheart">{$articledetail->getData('arheart')}</span><span class="icon">
+							<span>&nbsp;&nbsp;&nbsp;</span>
+							<span style="position: relative; left: -3px;"><span class="icon"><i class="icon-eye-open"></i></span></span><span id="arcomment">{$articledetail->getData('arcomment')}</span>
+						</span>
+				<p id="detail">{$articledetail->getData('artext')}</p>	
+                </div>
+              </li>
+            </ul>
+          </div>
+	</div>
+		<div class="widget-box" id="hotTalk">
+		<div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+            <h5>评论贴</h5>
+			<div class="balls">
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+					<div class="waiting1"></div>
+			  </div>
+          </div>
+		    <div class="widget-content nopadding collapse in" id="collapseG2">
+            <ul class="recent-post">
+				{volist name="commentdetails" id="commentdetail"}
+             	<li>
+                <div class="detail-user-thumb"><img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av1.jpg"> </div>
+                <div class="article-post"> <span class="user-info"> By: No.<span class="auther-name">{$commentdetail->getData('userID')}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Date: <span class="publish-date">{$commentdetail->getData('date_time')|substr=0,10}</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>/ Time:<span class="publish-time">
+                  {$commentdetail->getData('date_time')|substr=11}</span> </span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><i class="icon-thumbs-up"></i><a class="thumb-up" href="{:url('like_comment', ['coID'=>$commentdetail->getData('coID')])}">喜欢</a>
+					<span class="browse"><i class="icon-heart"></i></span><span id="arheart">{$commentdetail->getData('coheart')}</span>
+					<p id="detail">{$commentdetail->getData('cotext')}</p>
+					
+					<div class="article-source">{$key+1}楼</div>
+ 				</div>
+              </li>
+				{/volist}
+</ul>
+				{$commentdetails->render()}
+          </div>
+																		 </div>
+			<div class="widget-box">
+		<div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG3"><span class="icon"><i class="icon-chevron-down"></i></span>
+            <h5>发表你的评论吧~</h5>
+          </div>
+		    <div class="widget-content nopadding collapse in" id="collapseG3">
+			<ul class="recent-post">
+			<li>
+			<div class="user-thumb"><img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av1.jpg"> </div>
+          <form name="form1" method="post" action="http://localhost/web/thinkphp5/public/index.php/index/release/relea_comment?arID={$articledetail->getData('arID')}">
+			<textarea class="span8 comment-edit" name="mycomment" rows="3" cols="20"></textarea>
+  <input class="slide" type="submit" value="发表" />
+</form>	
+</li>
+				</ul>
+</div>
+<!--</div>-->
+	
+	</div>
+</div>
+</div>
+	<script src="/web/thinkphp5/public/static/js/excanvas.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.ui.custom.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/bootstrap.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.flot.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.flot.resize.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.peity.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/fullcalendar.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.gritter.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.interface.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.chat.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.validate.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.form_validation.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.wizard.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.uniform.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/select2.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.popover.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/jquery.dataTables.min.js"></script> 
+	<script src="/web/thinkphp5/public/static/js/matrix.tables.js"></script>
+<!--	<script src="/web/thinkphp5/public/static/js/page_onload.js"></script>-->
+	
+</body>
+</html>
+<!--<script>window.onload=page_onload("巅峰赛云中君已炸裂carry了，还不削么");</script>-->

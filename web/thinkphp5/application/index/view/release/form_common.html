@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>发帖页面</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-login.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/colorpicker.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/datepicker.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/uniform.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/select2.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-style.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/matrix-media.css" />
+<link rel="stylesheet" href="/web/thinkphp5/public/static/css/bootstrap-wysihtml5.css" />
+<link href="/web/thinkphp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a>MatAdmin</a></h1>
+</div> 
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">欢迎No:<span id="username">{$Think.session.userID}</span></span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/invoice"><i class="icon-user"></i> 我的资料</a></li>
+        <li class="divider"></li>
+        <li><a href="http://localhost/web/thinkphp5/public/index.php/index/add/login"><i class="icon-key"></i> 退出</a></li>
+      </ul>
+    </li>
+    <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
+    <li class=""><a title="" href="http://localhost/web/thinkphp5/public/index.php/index/add/login"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+  </ul>
+</div>
+
+<!--start-top-serch-->
+<!--close-top-serch--> 
+
+<!--sidebar-menu-->
+
+<div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-inbox"></i> Widgets</a>
+   <ul>
+     <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/index"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;首页</span></a></li>
+     <li class="submenu" > <a href="#"><em class="icon icon-inbox"></em> <span>&nbsp;&nbsp;&nbsp;板块</span></a>
+		<ul >
+        	<li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/kpl">王者荣耀</a></li>
+        	<li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/pubg">绝地求生</a></li>
+			
+      	</ul>
+	 </li>
+<!--	    <li><a href="http://localhost/web/thinkphp5/public/index.php/index/index/search"><em class="icon icon-home"></em> <span>&nbsp;&nbsp;&nbsp;搜索</span></a></li>-->
+  </ul>
+</div>
+
+<!--close-left-menu-stats-sidebar-->
+
+<div id="content">
+<div class="container-fluid">
+  <hr>
+    <div class="row-fluid">
+	<div class="span12">
+<!--
+      <div class="widget-box">
+        <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG1"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>编辑内容</h5>
+        </div>
+        <div class="widget-content nopadding collapse in" id="collapseG1">
+					<div class="detail-user-thumb"> <img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av4.jpg"> </div>
+				<form action="#" method="get" class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label">标题:</label>
+              <div class="controls">
+                <textarea type="text" class="span9" row="1"></textarea>
+              </div>
+            <hr/>
+              <label class="control-label">正文</label>
+              <div class="controls">
+                <textarea class="span9" row="10"></textarea>
+              </div>
+			  </div>
+            <div class="form-actions">
+              <input type="submit" class="btn btn-success slide" value="发表" />
+            </div>
+          </form>	
+
+          
+        </div>
+      </div>
+-->
+	<div class="widget-box">
+		<div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG3"><span class="icon"><i class="icon-chevron-down"></i></span>
+            <h5>编辑内容</h5>
+          </div>
+		    <div class="widget-content nopadding collapse in" id="collapseG3">
+			<ul class="recent-post">
+			<li>
+			<div class="detail-user-thumb"> <img width="40" height="40" alt="User" src="/web/thinkphp5/public/static/img/demo/av1.jpg"> </div>
+          <form name="form1" method="post" action="relea_article?arsource={$arsource}">
+			  <label class="control-label" style="align:center">标题:</label>
+			<textarea class="span4 comment-edit" name="title" rows="2" cols="20"></textarea>
+			  <hr/>
+              <label class="control-label">正文</label>
+			  <textarea class="span8 comment-edit" name="artext" rows="10" cols="20"></textarea>
+			  <div class="form-actions">
+              <input type="submit" class="btn btn-success slide" value="发表" />
+            </div>
+</form>	
+</li>
+</ul>
+		</div>
+	</div>          
+    </div>
+	</div>
+</div>
+</div>
+<!--Footer-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12">Copyright &copy; 2018.Company name All rights reserved wq.</div>
+</div>
+<!--end-Footer-part--> 
+<script src="/web/thinkphp5/public/static/js/jquery.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.ui.custom.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap-colorpicker.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap-datepicker.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.toggle.buttons.html"></script> 
+<script src="/web/thinkphp5/public/static/js/masked.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.uniform.js"></script> 
+<script src="/web/thinkphp5/public/static/js/select2.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/matrix.js"></script> 
+<script src="/web/thinkphp5/public/static/js/matrix.form_common.js"></script> 
+<script src="/web/thinkphp5/public/static/js/wysihtml5-0.3.0.js"></script> 
+<script src="/web/thinkphp5/public/static/js/jquery.peity.min.js"></script> 
+<script src="/web/thinkphp5/public/static/js/bootstrap-wysihtml5.js"></script> 
+<script>
+	$('.textarea_editor').wysihtml5();
+</script>
+</body>
+</html>
